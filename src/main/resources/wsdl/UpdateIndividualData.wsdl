@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://UpdateIndividualData" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://UpdateIndividualData" targetNamespace="http://UpdateIndividualData">
+	<wsdl:types>
+		<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://UpdateIndividualData">
+			<xs:element name="getCustomerInfoRequest">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="messageHeader" type="tns:messageHeaderObj"/>
+						<xs:element name="customerIdentityNumber" nillable="true" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="getCustomerInfoResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="messageHeader" type="tns:messageHeaderObj"/>
+						<xs:element name="customerIdentity" nillable="true" type="xs:integer"/>
+						<xs:element name="customerName" nillable="true" type="xs:string"/>
+						<xs:element name="socSecurityNumber" nillable="true" type="xs:string"/>
+						<xs:element name="holderType" nillable="true" type="xs:string"/>
+						<xs:element name="holderDescription" nillable="true" type="xs:string"/>
+						<xs:element name="ComOutLstStpEmpRsn" nillable="true" type="xs:string"/>
+						<xs:element name="sex" nillable="true" type="xs:string"/>
+						<xs:element name="birthday" nillable="true" type="xs:string"/>
+						<xs:element name="deathDate" nillable="true" type="xs:string"/>
+						<xs:element name="englishName" nillable="true" type="xs:string"/>
+						<xs:element name="paciNumber" nillable="true" type="xs:string"/>
+						<xs:element name="region" nillable="true" type="xs:string"/>
+						<xs:element name="allotmentNumber" nillable="true" type="xs:integer"/>
+						<xs:element name="avenueNumber" nillable="true" type="xs:integer"/>
+						<xs:element name="street" nillable="true" type="xs:string"/>
+						<xs:element name="houseNumber" nillable="true" type="xs:integer"/>
+						<xs:element name="floorNumber" nillable="true" type="xs:integer"/>
+						<xs:element name="apartmentNumber" nillable="true" type="xs:integer"/>
+						<xs:element name="email" nillable="true" type="xs:string"/>
+						<xs:element name="phoneNumber" nillable="true" type="xs:integer"/>
+						<xs:element name="mobileNumber" nillable="true" type="xs:integer"/>
+						<xs:element minOccurs="0" name="civilCardExpirationDate" nillable="true" type="xs:date"/>
+						<xs:element name="messageStatus" nillable="true" type="tns:messageStatusObj"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="updateCustomerProfileRequest">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="messageHeader" type="tns:messageHeaderObj"/>
+						<xs:element name="customerIdentity" nillable="true" type="xs:integer"/>
+						<xs:element name="clerkId" nillable="true" type="xs:string"/>
+						<xs:element name="deptId" nillable="true" type="xs:string"/>
+						<xs:element name="englishName" nillable="true" type="xs:string"/>
+						<xs:element name="paciNumber" nillable="true" type="xs:string"/>
+						<xs:element name="region" nillable="true" type="xs:string"/>
+						<xs:element name="allotmentNumber" nillable="true" type="xs:string"/>
+						<xs:element name="avenueNumber" nillable="true" type="xs:string"/>
+						<xs:element name="street" nillable="true" type="xs:string"/>
+						<xs:element name="houseNumber" nillable="true" type="xs:string"/>
+						<xs:element name="floorNumber" nillable="true" type="xs:string"/>
+						<xs:element name="apartmentNumber" nillable="true" type="xs:string"/>
+						<xs:element minOccurs="1" name="email" nillable="true" type="xs:string"/>
+						<xs:element name="phoneNumber" nillable="true" type="xs:string"/>
+						<xs:element name="mobileNumber" nillable="true" type="xs:string"/>
+						<xs:element name="civilCardExpirationDate" nillable="true" type="xs:date"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="updateCustomerProfileResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="messageHeader" type="tns:messageHeaderObj"/>
+						<xs:element name="Result" nillable="true" type="xs:boolean"/>
+						<xs:element name="messageStatus" nillable="true" type="tns:messageStatusObj"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:complexType name="messageStatusObj">
+				<xs:sequence>
+					<xs:element name="returnStatus" nillable="true" type="tns:returnStatusObj"/>
+					<xs:element name="returnStatusProvider" nillable="true" type="tns:returnStatusProviderObj"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="returnStatusObj">
+				<xs:sequence>
+					<xs:element maxOccurs="6" name="returnCode" type="xs:string"/>
+					<xs:element maxOccurs="128" name="returnCodeDescAr" type="xs:string"/>
+					<xs:element maxOccurs="128" name="returnCodeDescEn" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="returnStatusProviderObj">
+				<xs:sequence>
+					<xs:element maxOccurs="5" name="returnCodeProvider" type="xs:string"/>
+					<xs:element maxOccurs="23" name="returnCodeDescProviderAr" type="xs:string"/>
+					<xs:element maxOccurs="23" name="returnCodeDescProviderEn" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="messageHeaderObj">
+				<xs:sequence>
+					<xs:element maxOccurs="27" name="RequestId" type="xs:string"/>
+					<xs:element maxOccurs="3" name="RequestChannel">
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:enumeration value="MOB"/>
+								<xs:enumeration value="WEB"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element maxOccurs="17" name="RequestTime" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:schema>
+	</wsdl:types>
+	<wsdl:message name="updateCustomerProfileResponse">
+		<wsdl:part element="tns:updateCustomerProfileResponse" name="updateCustomerProfileResponse"> </wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="updateCustomerProfileRequest">
+		<wsdl:part element="tns:updateCustomerProfileRequest" name="updateCustomerProfileRequest"> </wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getCustomerInfoRequest">
+		<wsdl:part element="tns:getCustomerInfoRequest" name="getCustomerInfoRequest"> </wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getCustomerInfoResponse">
+		<wsdl:part element="tns:getCustomerInfoResponse" name="getCustomerInfoResponse"> </wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="UpdateIndividualData">
+		<wsdl:operation name="updateCustomerProfile">
+			<wsdl:input message="tns:updateCustomerProfileRequest" name="updateCustomerProfileRequest"> </wsdl:input>
+			<wsdl:output message="tns:updateCustomerProfileResponse" name="updateCustomerProfileResponse"> </wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getCustomerInfo">
+			<wsdl:input message="tns:getCustomerInfoRequest" name="getCustomerInfoRequest"> </wsdl:input>
+			<wsdl:output message="tns:getCustomerInfoResponse" name="getCustomerInfoResponse"> </wsdl:output>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="UpdateIndividualDataSoap11" type="tns:UpdateIndividualData">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="updateCustomerProfile">
+			<soap:operation soapAction=""/>
+			<wsdl:input name="updateCustomerProfileRequest">
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="updateCustomerProfileResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getCustomerInfo">
+			<soap:operation soapAction=""/>
+			<wsdl:input name="getCustomerInfoRequest">
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="getCustomerInfoResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="UpdateIndividualDataService">
+		<wsdl:port binding="tns:UpdateIndividualDataSoap11" name="UpdateIndividualDataSoap11">
+			<soap:address location="http://localhost:8888/ws"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
